@@ -13,3 +13,10 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'git clone https://github.com/jwarren01/Test.git $(Build.SourcesDirectory)\Test'
+- task: RunYuniqlCLI@1
+  inputs:
+    version: 'latest'
+    connectionString: 'Server=tcp:grover-central-reporting.database.windows.net,1433;Initial Catalog=CentralReporting;Persist Security Info=False;User ID=Importer;Password=./~N^ntdgd7wWkSb;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
+    workspacePath: 'Test'
+    targetPlatform: 'SqlServer'
+    additionalArguments: '--debug'
